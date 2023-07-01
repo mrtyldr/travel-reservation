@@ -1,13 +1,7 @@
 package com.connect2fly.c2flybacken.config;
 
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.wusly.backendmenu.infrastructure.aws.S3Properties;
-import com.wusly.backendmenu.repository.RestaurantRepository;
+import com.connect2fly.c2flybacken.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -28,10 +22,10 @@ import java.time.Clock;
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
-
+    private final UserRepository userRepository;
     @Bean
     public UserDetailsService userDetailsService(){
-        return username -> restaurantRepository.findByEmail(username)
+        return username -> userRepository.findByName(username)
                 .orElseThrow(() -> new RuntimeException("User not found!!"));
     }
     @Bean

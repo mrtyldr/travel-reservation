@@ -1,12 +1,13 @@
 spring:
   flyway:
-    locations: classpath:db/migration/
+    locations: classpath:db/migration
     enabled: true
     clean-disabled: false
     schemas: public
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
+
 
   datasource:
     driver-class-name: org.postgresql.Driver

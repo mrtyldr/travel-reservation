@@ -6,7 +6,6 @@ import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import org.springframework.data.domain.Persistable;
-
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.Objects;
